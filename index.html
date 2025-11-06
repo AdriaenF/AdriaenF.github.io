@@ -1,1 +1,383 @@
-banana
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Adriaen Ferranti · Portfolio</title>
+		<meta
+			name="description"
+			content="The portfolio of artist Adrian Ferranti, showcasing drawings, sketches, and illustrative studies."
+		/>
+		<style>
+			:root {
+				color-scheme: light dark;
+				--bg: #faf7f2;
+				--text: #1f1f1f;
+				--muted: #5c5c5c;
+				--accent: #d7724d;
+				--accent-strong: #bb532b;
+				--shadow: rgba(0, 0, 0, 0.06);
+			}
+
+			* {
+				box-sizing: border-box;
+			}
+
+			body {
+				margin: 0;
+				font-family: "Work Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+				background: var(--bg);
+				color: var(--text);
+				line-height: 1.6;
+				-webkit-font-smoothing: antialiased;
+			}
+
+			img {
+				max-width: 100%;
+				display: block;
+			}
+
+			a {
+				color: inherit;
+				text-decoration: none;
+			}
+
+			header {
+				padding: 1.5rem 1.75rem 1rem;
+				display: flex;
+				flex-direction: column;
+				gap: 1.25rem;
+				background: rgba(255, 255, 255, 0.7);
+				backdrop-filter: blur(12px);
+				position: sticky;
+				top: 0;
+				z-index: 10;
+				border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+			}
+
+			.brand {
+				display: flex;
+				align-items: center;
+				gap: 0.5rem;
+				font-size: 1.25rem;
+				font-weight: 600;
+				letter-spacing: 0.08em;
+				text-transform: uppercase;
+			}
+
+			nav {
+				display: flex;
+				gap: 1rem;
+				flex-wrap: wrap;
+				font-size: 0.95rem;
+			}
+
+			nav a {
+				padding: 0.35rem 0.75rem;
+				border-radius: 999px;
+				transition: background 150ms ease, color 150ms ease, transform 150ms ease;
+			}
+
+			nav a:focus-visible,
+			nav a:hover {
+				background: var(--accent);
+				color: #fff;
+				transform: translateY(-1px);
+			}
+
+			main {
+				display: flex;
+				flex-direction: column;
+				gap: 3rem;
+				padding: 0 1.75rem 4rem;
+				max-width: 1080px;
+				margin: 0 auto;
+			}
+
+			.hero {
+				padding-top: 2rem;
+			}
+
+			.hero h1 {
+				font-size: clamp(2rem, 6vw, 3.75rem);
+				line-height: 1.1;
+				margin: 0 0 0.75rem;
+				font-weight: 600;
+				letter-spacing: -0.01em;
+			}
+
+			.hero p {
+				margin: 0 0 1.5rem;
+				font-size: 1.05rem;
+				color: var(--muted);
+				max-width: 36rem;
+			}
+
+			.cta {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				background: var(--accent);
+				color: #fff;
+				padding: 0.75rem 1.5rem;
+				border-radius: 999px;
+				font-weight: 600;
+				letter-spacing: 0.03em;
+				transition: background 150ms ease, transform 150ms ease;
+			}
+
+			.cta:hover,
+			.cta:focus-visible {
+				background: var(--accent-strong);
+				transform: translateY(-1px);
+			}
+
+			section h2 {
+				font-size: clamp(1.5rem, 4vw, 2.25rem);
+				margin-bottom: 1rem;
+				letter-spacing: -0.01em;
+			}
+
+			#portfolio .grid {
+				display: grid;
+				gap: 1.5rem;
+			}
+
+			.artwork-card {
+				border-radius: 16px;
+				overflow: hidden;
+				box-shadow: 0 18px 40px -25px var(--shadow);
+				background: rgba(255, 255, 255, 0.85);
+				backdrop-filter: blur(10px);
+				border: 1px solid rgba(0, 0, 0, 0.04);
+				transition: transform 180ms ease, box-shadow 180ms ease;
+			}
+
+			.artwork-card img {
+				width: 100%;
+				height: auto;
+			}
+
+			.artwork-info {
+				padding: 1rem 1.25rem 1.5rem;
+			}
+
+			.artwork-info h3 {
+				margin: 0 0 0.5rem;
+				font-size: 1.1rem;
+				letter-spacing: 0.01em;
+			}
+
+			.artwork-info p {
+				margin: 0;
+				color: var(--muted);
+				font-size: 0.95rem;
+			}
+
+			.artwork-card:hover,
+			.artwork-card:focus-within {
+				transform: translateY(-4px);
+				box-shadow: 0 26px 45px -25px rgba(215, 114, 77, 0.35);
+			}
+
+			#about p,
+			#contact p {
+				margin: 0 0 1rem;
+				max-width: 46rem;
+				color: var(--muted);
+				font-size: 1.05rem;
+			}
+
+			.contact-card {
+				display: grid;
+				gap: 1rem;
+				padding: 1.5rem;
+				background: rgba(255, 255, 255, 0.8);
+				border-radius: 18px;
+				border: 1px solid rgba(0, 0, 0, 0.04);
+				box-shadow: 0 12px 30px -20px var(--shadow);
+			}
+
+			.contact-links {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75rem;
+			}
+
+			.contact-links a {
+				padding: 0.65rem 1.1rem;
+				border-radius: 999px;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+				transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+			}
+
+			.contact-links a:hover,
+			.contact-links a:focus-visible {
+				background: var(--accent);
+				border-color: var(--accent);
+				color: #fff;
+			}
+
+			footer {
+				text-align: center;
+				padding: 2rem 1.75rem 2.5rem;
+				font-size: 0.9rem;
+				color: var(--muted);
+			}
+
+			@media (prefers-reduced-motion: reduce) {
+				*,
+				*::before,
+				*::after {
+					animation-duration: 0.01ms !important;
+					animation-iteration-count: 1 !important;
+					transition-duration: 0.01ms !important;
+					scroll-behavior: auto !important;
+				}
+			}
+
+			@media (min-width: 640px) {
+				nav {
+					justify-content: flex-start;
+				}
+
+				#portfolio .grid {
+					grid-template-columns: repeat(2, minmax(0, 1fr));
+				}
+			}
+
+			@media (min-width: 900px) {
+				header {
+					flex-direction: row;
+					align-items: center;
+					justify-content: space-between;
+				}
+
+				nav {
+					gap: 1.5rem;
+				}
+
+				.hero {
+					display: grid;
+					grid-template-columns: 2fr 1fr;
+					gap: 2.5rem;
+					align-items: end;
+				}
+
+				.hero p {
+					font-size: 1.1rem;
+				}
+
+				#portfolio .grid {
+					grid-template-columns: repeat(3, minmax(0, 1fr));
+				}
+
+				.contact-card {
+					grid-template-columns: 2fr 1fr;
+					align-items: center;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="brand">Adriean Ferranti</div>
+			<nav>
+				<a href="#portfolio">Portfolio</a>
+				<a href="#about">About</a>
+			<a href="#contact">Contact</a>
+			<a href="https://instagram.com/adrianferranti" target="_blank" rel="noreferrer noopener">Instagram</a>
+			</nav>
+		</header>
+
+		<main>
+			<section class="hero" aria-labelledby="hero-title">
+				<div>
+					<h1 id="hero-title">Illustrations that explore duality and motion</h1>
+					<p>
+						Adriean Ferranti is a multidisciplinary artist blending figurative drawing with dreamlike
+						narrative. Explore a curated selection of recent studio experiments, sketches, and
+						detailed renderings.
+					</p>
+					<a class="cta" href="#portfolio">View the work</a>
+				</div>
+			</section>
+
+			<section id="portfolio" aria-labelledby="portfolio-title">
+				<h2 id="portfolio-title">Selected Works</h2>
+				<div class="grid">
+					<article class="artwork-card">
+						<img src="images/adrain-ferrant-double-face.jpg" alt="Illustration of two faces merging together by Adrian Ferranti" />
+						<div class="artwork-info">
+							<h3>Double Face Study</h3>
+							<p>Graphite exploration of mirrored identity and fluid contours.</p>
+						</div>
+					</article>
+					<article class="artwork-card">
+						<img src="images/adrian-ferranti-sketchbook-page.jpg" alt="Sketchbook page filled with figure studies by Adrian Ferranti" />
+						<div class="artwork-info">
+							<h3>Sketchbook Fragments</h3>
+							<p>Loose figure work documenting gesture, rhythm, and motion.</p>
+						</div>
+					</article>
+					<article class="artwork-card">
+						<img src="images/adrian-ferranti-tank-drawing.jpg" alt="Detailed illustration of a tank by Adrian Ferranti" />
+						<div class="artwork-info">
+							<h3>Mechanical Reverie</h3>
+							<p>Ink rendering that contrasts technical structure with organic mark-making.</p>
+						</div>
+					</article>
+				</div>
+			</section>
+
+			<section id="about" aria-labelledby="about-title">
+				<h2 id="about-title">About Adrian</h2>
+				<p>
+					Adriean Ferranti is a Brooklyn-based artist whose practice spans drawing, mixed media, and
+					digital illustration. With roots in classical draftsmanship, Adriean experiments with
+					layered narratives that uncover the tensions between human form and imagined machinery.
+				
+				<p>
+					Recent exhibitions include independent shows in New York and collaborative pop-ups focusing
+					on experimental sketch processes. Adriean also leads workshops on drawing for movement and
+					creative ideation.
+				</p>
+			</section>
+
+			<section id="contact" aria-labelledby="contact-title">
+				<h2 id="contact-title">Let’s Connect</h2>
+				<p>
+					For commissions, collaborations, or studio visits, reach out directly or follow along on
+					social platforms for works-in-progress and announcements.
+				</p>
+				<div class="contact-card">
+					<div>
+						<p>
+							<strong>Email:</strong>
+							<a href="mailto:hello@adrianferranti.art">hello@adrianferranti.art</a>
+						</p>
+						<p>
+							<strong>Studio updates:</strong>
+							Monthly notes on new pieces, behind-the-scenes sketches, and upcoming events.
+						</p>
+					</div>
+					<div class="contact-links">
+						<a href="mailto:hello@adrianferranti.art">Email Adriean</a>
+						<a href="https://instagram.com/adrianferranti" target="_blank" rel="noreferrer noopener">Instagram</a>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer>
+			© <span id="year"></span> Adriean Ferranti. All rights reserved.
+		</footer>
+
+		<script>
+			const yearEl = document.getElementById("year");
+			if (yearEl) {
+				yearEl.textContent = new Date().getFullYear();
+			}
+		</script>
+	</body>
+</html>
